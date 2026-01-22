@@ -306,11 +306,6 @@ class _GestureHelpState extends State<GestureHelp> {
                               GestureIcons.iconGestureFDrag,
                               translate("Two-Finger Move"),
                               translate("Canvas Move")),
-                          GestureInfo(
-                              width,
-                              GestureIcons.iconGesturePinch,
-                              translate("Pinch to Zoom"),
-                              translate("Canvas Zoom")),
                         ]
                       : [
                           GestureInfo(
@@ -338,11 +333,6 @@ class _GestureHelpState extends State<GestureHelp> {
                               GestureIcons.iconGestureFDrag,
                               translate("Two-Finger Move"),
                               translate("Canvas Move")),
-                          GestureInfo(
-                              width,
-                              GestureIcons.iconGesturePinch,
-                              translate("Pinch to Zoom"),
-                              translate("Canvas Zoom")),
                         ],
                 )),
               ],
