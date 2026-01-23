@@ -124,8 +124,30 @@ class _RemotePageState extends State<RemotePage> with WidgetsBindingObserver {
       }
       _disableAndroidSoftKeyboard(
           isKeyboardVisible: keyboardVisibilityController.isVisible);
+      _applyAndroidFixedResolution();
     });
     WidgetsBinding.instance.addObserver(this);
+  }
+
+  void _applyAndroidFixedResolution() {
+    if (!isAndroid) return;
+    if (gFFI.ffiModel.isPeerAndroid) return;
+    final pi = gFFI.ffiModel.pi;
+    if (pi.currentDisplay == kAllDisplayValue) return;
+    final display = pi.tryGetDisplayIfNotAllDisplay(display: pi.currentDisplay);
+    if (display == null) return;
+    const targetW = 1920;
+    const targetH = 1080;
+    if (display.width == targetW && display.height == targetH) return;
+    final match = pi.resolutions
+        .any((e) => e.width == targetW && e.height == targetH);
+    if (!match) return;
+    bind.sessionChangeResolution(
+      sessionId: gFFI.sessionId,
+      display: pi.currentDisplay,
+      width: targetW,
+      height: targetH,
+    );
   }
 
   @override
