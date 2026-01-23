@@ -463,8 +463,16 @@ class _RawTouchGestureDetectorRegionState
                     .toJson()));
       }
     } else {
-      ffi.canvasModel.panX(d.focalPointDelta.dx);
-      ffi.canvasModel.panY(d.focalPointDelta.dy);
+      final deltaScale = d.scale - _scale;
+      _scale = d.scale;
+      _mouseScrollIntegral += deltaScale * 30;
+      if (_mouseScrollIntegral > 1) {
+        inputModel.scroll(-1);
+        _mouseScrollIntegral = 0;
+      } else if (_mouseScrollIntegral < -1) {
+        inputModel.scroll(1);
+        _mouseScrollIntegral = 0;
+      }
     }
   }
 
@@ -490,18 +498,7 @@ class _RawTouchGestureDetectorRegionState
   }
 
   get onHoldDragCancel => null;
-  get onThreeFingerVerticalDragUpdate => ffi.ffiModel.isPeerAndroid
-      ? null
-      : (d) {
-          _mouseScrollIntegral += d.delta.dy / 4;
-          if (_mouseScrollIntegral > 1) {
-            inputModel.scroll(1);
-            _mouseScrollIntegral = 0;
-          } else if (_mouseScrollIntegral < -1) {
-            inputModel.scroll(-1);
-            _mouseScrollIntegral = 0;
-          }
-        };
+  get onThreeFingerVerticalDragUpdate => null;
 
   makeGestures(BuildContext context) {
     return <Type, GestureRecognizerFactory>{
