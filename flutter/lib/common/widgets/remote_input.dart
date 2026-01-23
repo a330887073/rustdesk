@@ -467,10 +467,10 @@ class _RawTouchGestureDetectorRegionState
       _scale = d.scale;
       _mouseScrollIntegral += deltaScale * 30;
       if (_mouseScrollIntegral > 1) {
-        inputModel.scroll(-1);
+        inputModel.scroll(1);
         _mouseScrollIntegral = 0;
       } else if (_mouseScrollIntegral < -1) {
-        inputModel.scroll(1);
+        inputModel.scroll(-1);
         _mouseScrollIntegral = 0;
       }
     }
