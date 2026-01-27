@@ -9,7 +9,7 @@ import com.bqjx.gkj.RdClipboardManager
 
 object FFI {
     init {
-        System.loadLibrary("BQJX")
+        System.loadLibrary("rustdesk")
     }
 
     external fun init(ctx: Context)
