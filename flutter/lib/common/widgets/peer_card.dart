@@ -968,10 +968,12 @@ class RecentPeerCard extends BasePeerCard {
       BuildContext context) async {
     final List<MenuEntryBase<String>> menuItems = [
       _connectAction(context),
-      _transferFileAction(context),
-      _viewCameraAction(context),
       _terminalAction(context),
     ];
+    if (!isAndroid) {
+      menuItems.insert(1, _transferFileAction(context));
+      menuItems.insert(2, _viewCameraAction(context));
+    }
 
     if (peer.platform == kPeerPlatformWindows) {
       menuItems.add(_terminalRunAsAdminAction(context));
@@ -1033,10 +1035,12 @@ class FavoritePeerCard extends BasePeerCard {
       BuildContext context) async {
     final List<MenuEntryBase<String>> menuItems = [
       _connectAction(context),
-      _transferFileAction(context),
-      _viewCameraAction(context),
       _terminalAction(context),
     ];
+    if (!isAndroid) {
+      menuItems.insert(1, _transferFileAction(context));
+      menuItems.insert(2, _viewCameraAction(context));
+    }
 
     if (peer.platform == kPeerPlatformWindows) {
       menuItems.add(_terminalRunAsAdminAction(context));
@@ -1093,10 +1097,12 @@ class DiscoveredPeerCard extends BasePeerCard {
       BuildContext context) async {
     final List<MenuEntryBase<String>> menuItems = [
       _connectAction(context),
-      _transferFileAction(context),
-      _viewCameraAction(context),
       _terminalAction(context),
     ];
+    if (!isAndroid) {
+      menuItems.insert(1, _transferFileAction(context));
+      menuItems.insert(2, _viewCameraAction(context));
+    }
 
     if (peer.platform == kPeerPlatformWindows) {
       menuItems.add(_terminalRunAsAdminAction(context));
@@ -1152,10 +1158,12 @@ class AddressBookPeerCard extends BasePeerCard {
       BuildContext context) async {
     final List<MenuEntryBase<String>> menuItems = [
       _connectAction(context),
-      _transferFileAction(context),
-      _viewCameraAction(context),
       _terminalAction(context),
     ];
+    if (!isAndroid) {
+      menuItems.insert(1, _transferFileAction(context));
+      menuItems.insert(2, _viewCameraAction(context));
+    }
 
     if (peer.platform == kPeerPlatformWindows) {
       menuItems.add(_terminalRunAsAdminAction(context));
@@ -1309,10 +1317,12 @@ class MyGroupPeerCard extends BasePeerCard {
       BuildContext context) async {
     final List<MenuEntryBase<String>> menuItems = [
       _connectAction(context),
-      _transferFileAction(context),
-      _viewCameraAction(context),
       _terminalAction(context),
     ];
+    if (!isAndroid) {
+      menuItems.insert(1, _transferFileAction(context));
+      menuItems.insert(2, _viewCameraAction(context));
+    }
 
     if (peer.platform == kPeerPlatformWindows) {
       menuItems.add(_terminalRunAsAdminAction(context));
